@@ -11,6 +11,7 @@ const newsReducer = (state = defaultState, action) => {
 	switch (action.type) {
 		case 'GET_NEWS':
 			return {...state, news: action.payload}
+
 		case 'ADD_NEWS':
 			return {...state, stories: [...state.stories,action.payload]}
 		case 'DELETE_NEWS':

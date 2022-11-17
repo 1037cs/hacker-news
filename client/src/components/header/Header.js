@@ -2,15 +2,21 @@ import React from 'react';
 import './header.scss';
 import refreshIcon from '../../assets/refreshIcon.svg'
 import {useDispatch} from "react-redux";
-import {getNews} from "../../http/requests";
+import {getNew, getNews} from "../../http/requests";
+import {trackPromise} from "react-promise-tracker";
 
 const Header = () => {
 	const dispatch = useDispatch()
 
 	const refreshNews = async () => {
-		const data = await getNews()
-		dispatch({type: 'GET_NEWS', payload: data.data.slice(0, 100)})
-		console.log('НОВОСТИ ЗАГРУЖЕНЫ')
+		dispatch({type:'DELETE_NEWS'})
+		getNews().then(data => {
+			data.data.slice(0, 100).map(id => {
+				trackPromise(getNew(id).then(data => {
+					dispatch({type: 'ADD_NEWS', payload: data.data})
+				}),'MAIN')
+			})
+		})
 	}
 
 	return (

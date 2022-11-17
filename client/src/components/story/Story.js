@@ -4,7 +4,7 @@ import Comment from "./comment/Comment";
 import {useParams} from "react-router-dom/cjs/react-router-dom";
 import {getNew} from "../../http/requests";
 import {trackPromise} from 'react-promise-tracker';
-import Loader from '../loader/Loader';
+import Skeleton from '../loaders/Skeleton';
 import {useDispatch, useSelector} from "react-redux";
 import {formatTime} from "../../functions/formatTime";
 import arrow from '../../assets/arrow.svg'
@@ -17,8 +17,6 @@ const Story = () => {
 
 	const story = useSelector(state => state.story)
 	const commentsIds = useSelector(state => state.commentsIds)
-
-	const area = 'STORY'
 
 	useEffect(() => {
 		trackPromise(
@@ -40,7 +38,7 @@ const Story = () => {
 
 	return (
 		<div className='story'>
-			<Loader area={area}/>
+			<Skeleton area='STORY'/>
 			<div className="story-header">
 				<NavLink className='back-button' to={MAIN_PAGE}>
 					<img className='back-button__icon' src={arrow} alt='Go back to news'/>
