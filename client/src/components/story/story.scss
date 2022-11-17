@@ -1,0 +1,74 @@
+@import "../../utils/colors";
+
+.story {
+  position: relative;
+  //color: #096aa8;
+  .back-button{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: fit-content;
+
+    & *{
+      cursor: pointer;
+    }
+
+    &__icon{
+      width: 20px;
+    }
+
+    &__title{
+      font-size: 24px;
+    }
+  }
+
+  &-header{
+    padding: 50px 0 40px;
+  }
+
+  &__title {
+    font-size: 64px;
+    font-weight: 800;
+    display: inline;
+    line-height: 1;
+    cursor: pointer;
+    margin-right: 5px;
+
+    text-decoration: underline;
+  }
+
+  &__url {
+    line-height: 1;
+    font-size: 40px;
+    color: $secondaryColor;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  &__created {
+    margin-top: 30px;
+    text-align: right;
+    color: $secondaryColor;
+    font-weight: 600;
+    font-size: 32px;
+  }
+
+}
+
+.line{
+  border:1px solid $lineColor;
+}
+
+.story-comments{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 40px 0;
+}
+
+.comment{
+  &-count{
+    font-weight: 700;
+    font-size: 32px;
+  }
+}

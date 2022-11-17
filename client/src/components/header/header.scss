@@ -1,0 +1,21 @@
+.header{
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo{
+    font-size: 64px;
+    font-weight: 800;
+  }
+
+  &__refreshButton{
+    cursor: pointer;
+    width: 37.85px;
+    height: 36.05px;
+  }
+}
+
+.logo{
+  display: inline-block;
+}

@@ -1,0 +1,63 @@
+@import "../../../../utils/colors";
+
+.story-card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 72px repeat(2,1fr);
+  padding: 10px 20px 10px 0;
+
+  box-shadow: 0 4px 30px -4px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  transition: transform 0.2s ease-in;
+  cursor: pointer;
+
+  & *:not(&__rating){
+    cursor: pointer;
+  }
+
+  &:hover{
+    transform: scale(1.01);
+  }
+
+  &__rating {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    font-size: 24px;
+    font-weight: 600;
+    justify-self: center;
+    align-self: center;
+
+    &_green{
+      color: $positiveRationColor;
+    }
+
+    &_red{
+      color: $negativeRationColor;
+    }
+  }
+
+  &__title {
+    grid-column-start: 2;
+    grid-column-end: 4;
+
+    font-size: 32px;
+    font-weight: 700;
+
+    line-height: 1.2;
+  }
+
+  &__author {
+    font-size: 20px;
+    color: $secondaryColor;
+    font-weight: 700;
+  }
+
+  &__date {
+    grid-column-start: 3;
+
+    font-size: 20px;
+    color: $secondaryColor;
+    font-weight: 500;
+    justify-self: end;
+  }
+}
