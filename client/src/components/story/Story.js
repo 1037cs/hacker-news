@@ -24,6 +24,7 @@ const Story = () => {
 		trackPromise(
 			getNew(id).then(({data}) => {
 				dispatch({type: 'SET_STORY', payload: data})
+				document.title = data.title
 				if (data.kids && data.kids.length !== 0) {
 					dispatch({type: 'GET_COMMENTS-IDS', payload: data.kids})
 				}
