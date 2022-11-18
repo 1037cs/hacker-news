@@ -67,6 +67,18 @@
 }
 
 .comment{
+
+  &-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img{
+      width: 30px;
+      height: 30px;
+    }
+  }
+
   &-count{
     font-weight: 700;
     font-size: 32px;

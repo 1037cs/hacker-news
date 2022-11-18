@@ -4,25 +4,26 @@ import {formatTime} from "../../../utils/formatTime";
 import {getNew} from "../../../http/requests";
 import {trackPromise} from "react-promise-tracker";
 import rectangle from '../../../assets/rect.svg'
+import Skeleton from "../../loaders/skeleton/Skeleton";
 
 const Comment = ({id, child}) => {
 	const [currenComment, setCurrentComment] = useState({})
 	const [show, setShow] = useState(false)
 
-	const area = 'COMMENT'
 
 	useEffect(() => {
 		trackPromise(
 			getNew(id).then(({data}) =>
 				setCurrentComment(data)
-			),area)
+			),)
 	}, [])
+
 	return (
 		<div className='comment-wrapper' style={child && {marginLeft: '60px'}}>
 			<div className='comment'>
 				<div
 					className="comment__created">{currenComment.by || 'by unknown'}, {formatTime(currenComment.time)}</div>
-				<div className="comment__text" dangerouslySetInnerHTML={{__html: currenComment.text || 'unknown'}}/>
+				<p className="comment__text" dangerouslySetInnerHTML={{__html: currenComment.text || 'unknown'}}/>
 			</div>
 			{!show && currenComment.kids ?
 				<div onClick={() => setShow(true)} className='view-replies-wrapper'>

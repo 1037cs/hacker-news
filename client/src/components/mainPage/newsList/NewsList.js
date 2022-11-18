@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getNew, getNews} from "../../../http/requests";
 import StoryCard from "./storyCard/StoryCard";
 import {trackPromise} from "react-promise-tracker";
-import Spinner from "../../loaders/Spinner";
+import Spinner from "../../loaders/spinner/Spinner";
 
 const NewsList = () => {
 	const stories = useSelector(state => state.stories)

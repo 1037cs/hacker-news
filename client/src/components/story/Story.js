@@ -2,9 +2,10 @@ import React, {useEffect} from 'react';
 import './story.scss'
 import Comment from "./comment/Comment";
 import {useParams} from "react-router-dom/cjs/react-router-dom";
+import refreshIcon from '../../assets/refreshIcon.svg'
 import {getNew} from "../../http/requests";
 import {trackPromise} from 'react-promise-tracker';
-import Skeleton from '../loaders/Skeleton';
+import Skeleton from '../loaders/skeleton/Skeleton';
 import {useDispatch, useSelector} from "react-redux";
 import {formatTime} from "../../utils/formatTime";
 import arrow from '../../assets/arrow.svg'
@@ -25,7 +26,7 @@ const Story = () => {
 				if (data.kids && data.kids.length !== 0) {
 					dispatch({type: 'GET_COMMENTS-IDS', payload: data.kids})
 				}
-			}),'STORY')
+			}), 'STORY')
 	}, [])
 
 	//willUnmount
@@ -35,6 +36,17 @@ const Story = () => {
 			dispatch({type: 'DELETE_COMMENTS-IDS'})
 		}
 	}, [])
+
+	const refreshNews = () => {
+		dispatch({type:'DELETE_COMMENTS'})
+		trackPromise(
+			getNew(id).then(({data}) => {
+				dispatch({type: 'SET_STORY', payload: data})
+				if (data.kids && data.kids.length !== 0) {
+					dispatch({type: 'GET_COMMENTS-IDS', payload: data.kids})
+				}
+			}))
+	}
 
 	return (
 		<div className='story'>
@@ -52,7 +64,11 @@ const Story = () => {
 			<hr className="line"/>
 
 			<div className="story-comments">
-				<div className="comment-count">{commentsIds.length} comments</div>
+
+				<div className='comment-header'>
+					<div className="comment-count">{commentsIds.length} comments</div>
+					<img src={refreshIcon} className='header__refreshButton'  onClick={() => refreshNews()} alt=''/>
+				</div>
 				{commentsIds.map(elem =>
 					<Comment key={elem} id={elem}/>
 				)}
