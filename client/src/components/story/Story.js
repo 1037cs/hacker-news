@@ -37,15 +37,14 @@ const Story = () => {
 		}
 	}, [])
 
-	const refreshNews = () => {
-		dispatch({type:'DELETE_COMMENTS'})
-		trackPromise(
-			getNew(id).then(({data}) => {
-				dispatch({type: 'SET_STORY', payload: data})
-				if (data.kids && data.kids.length !== 0) {
-					dispatch({type: 'GET_COMMENTS-IDS', payload: data.kids})
-				}
-			}))
+	const refreshComments = () => {
+		dispatch({type: 'DELETE_COMMENTS-IDS'})
+		getNew(id).then(({data}) => {
+			dispatch({type: 'SET_STORY', payload: data})
+			if (data.kids && data.kids.length !== 0) {
+				dispatch({type: 'GET_COMMENTS-IDS', payload: data.kids})
+			}
+		})
 	}
 
 	return (
@@ -67,7 +66,7 @@ const Story = () => {
 
 				<div className='comment-header'>
 					<div className="comment-count">{commentsIds.length} comments</div>
-					<img src={refreshIcon} className='header__refreshButton'  onClick={() => refreshNews()} alt=''/>
+					<img src={refreshIcon} className='header__refreshButton' onClick={() => refreshComments()} alt=''/>
 				</div>
 				{commentsIds.map(elem =>
 					<Comment key={elem} id={elem}/>

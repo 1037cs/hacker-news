@@ -4,7 +4,6 @@ import {formatTime} from "../../../utils/formatTime";
 import {getNew} from "../../../http/requests";
 import {trackPromise} from "react-promise-tracker";
 import rectangle from '../../../assets/rect.svg'
-import Skeleton from "../../loaders/skeleton/Skeleton";
 
 const Comment = ({id, child}) => {
 	const [currenComment, setCurrentComment] = useState({})
