@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './comment.scss'
-import {formatTime} from "../../../functions/formatTime";
+import {formatTime} from "../../../utils/formatTime";
 import {getNew} from "../../../http/requests";
 import {trackPromise} from "react-promise-tracker";
 import rectangle from '../../../assets/rect.svg'
