@@ -57,8 +57,20 @@
 }
 
 .comment-wrapper{
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+
+.comment-spinner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+  background-color:white;
+  box-shadow: 0 4px 30px -4px rgba(0, 0, 0, 0.25);
+
+  border-radius:9px;
 }
