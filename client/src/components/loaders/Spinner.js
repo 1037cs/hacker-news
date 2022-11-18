@@ -18,6 +18,7 @@ const Spinner = ({area}) => {
 					wrapperClass="blocks-wrapper"
 					colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
 				/> : null}
+			<div className='spinner-text'>News is loading...</div>
 		</div>
 	);
 };

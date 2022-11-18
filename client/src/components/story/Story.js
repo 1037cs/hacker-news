@@ -6,7 +6,7 @@ import {getNew} from "../../http/requests";
 import {trackPromise} from 'react-promise-tracker';
 import Skeleton from '../loaders/Skeleton';
 import {useDispatch, useSelector} from "react-redux";
-import {formatTime} from "../../functions/formatTime";
+import {formatTime} from "../../utils/formatTime";
 import arrow from '../../assets/arrow.svg'
 import {NavLink} from "react-router-dom";
 import {MAIN_PAGE} from "../../utils/routes";

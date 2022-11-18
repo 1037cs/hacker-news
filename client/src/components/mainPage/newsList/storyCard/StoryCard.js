@@ -1,6 +1,6 @@
 import React from 'react';
 import {STORY_PAGE} from "../../../../utils/routes";
-import {formatTime} from "../../../../functions/formatTime";
+import {formatTime} from "../../../../utils/formatTime"
 import {NavLink} from "react-router-dom";
 import './storyCard.scss'
 

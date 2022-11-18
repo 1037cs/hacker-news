@@ -10,6 +10,16 @@ const NewsList = () => {
 	const stories = useSelector(state => state.stories)
 	const dispatch = useDispatch()
 
+	function compare( a, b ) {
+		if ( a.time > b.time ){
+			return -1
+		}
+		if ( a.time < b.time ){
+			return 1
+		}
+		return 0;
+	}
+
 	useEffect(() => {
 		const interval = setInterval(async () => {
 			dispatch({type:'DELETE_NEWS'})
@@ -27,7 +37,7 @@ const NewsList = () => {
 	return (
 		<main className='news-list'>
 			<Spinner area='MAIN'/>
-			{stories.map(elem =>
+			{stories.sort(compare).map(elem =>
 				<StoryCard id={elem.id}
 				           key={elem.id}
 				           title={elem.title}
