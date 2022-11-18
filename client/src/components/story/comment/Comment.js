@@ -18,7 +18,7 @@ const Comment = ({id, child}) => {
 	}, [])
 
 	return (
-		<div className='comment-wrapper' style={child && {marginLeft: '60px'}}>
+		currenComment.text && <div className='comment-wrapper' style={child && {marginLeft: '60px'}}>
 			<div className='comment'>
 				<div
 					className="comment__created">{currenComment.by || 'by unknown'}, {formatTime(currenComment.time)}</div>
@@ -27,7 +27,7 @@ const Comment = ({id, child}) => {
 			{!show && currenComment.kids ?
 				<div onClick={() => setShow(true)} className='view-replies-wrapper'>
 					<img alt='' src={rectangle}/>
-					<div className='view-replies-button'>View replies</div>
+					<div className='view-replies-button'>view replies ({currenComment.kids.length})</div>
 				</div>
 				: ''}
 			{show && currenComment.kids ?
