@@ -47,7 +47,6 @@
 
 - React 18
 - Redux
-- Typescript
 - Axios
 - Express 
 
